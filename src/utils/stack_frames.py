@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import os
-from align_frames import align_images
+from .align_frames import align_images
 
 def stack_frames(frames_dir, output_path, max_frames=10):
     files = sorted([f for f in os.listdir(frames_dir) if f.endswith(".png")])

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def align_images(img, ref_img):
+def align_images(img, ref_img, return_matrix=False):
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     warp_mode = cv2.MOTION_EUCLIDEAN
@@ -12,4 +12,7 @@ def align_images(img, ref_img):
 
     aligned = cv2.warpAffine(img, warp_matrix, (ref_img.shape[1], ref_img.shape[0]),
                              flags=cv2.INTER_LINEAR + cv2.WARP_INVERSE_MAP)
+
+    if return_matrix:
+        return aligned, warp_matrix
     return aligned
